@@ -13,4 +13,10 @@ export const defaultStyles = StyleSheet.create({
   },
 });
 
-export const utilsStyles = StyleSheet.create({});
+export const utilStyles = StyleSheet.create({
+  itemSeparator: {
+    borderColor: colors.textMuted,
+    borderWidth: StyleSheet.hairlineWidth,
+    opacity: 0.3,
+  },
+});

@@ -32,4 +32,13 @@ export const utilStyles = StyleSheet.create({
     marginTop: 40,
     opacity: 0.3,
   },
+  centeredRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  slider: {
+    height: 7,
+    borderRadius: 16,
+  },
 });

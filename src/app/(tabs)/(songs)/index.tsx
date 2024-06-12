@@ -3,9 +3,9 @@ import { defaultStyles } from "@/styles";
 import TracksList from "@/components/TracksList";
 import { padding } from "@/constants/tokens";
 import useNavigationSearch from "@/hooks/useNavigationSearch";
-import library from "@/assets/data/library.json";
 import { useMemo } from "react";
 import { trackTitleFilter } from "@/helpers/filter";
+import { useTracks } from "@/store/library";
 
 const SongsScreen = () => {
   const search = useNavigationSearch({
@@ -14,11 +14,13 @@ const SongsScreen = () => {
     },
   });
 
-  const filteredSongs = useMemo(() => {
-    if (!search) return library;
+  const tracks = useTracks();
 
-    return library.filter(trackTitleFilter(search));
-  }, [search]);
+  const filteredSongs = useMemo(() => {
+    if (!search) return tracks;
+
+    return tracks.filter(trackTitleFilter(search));
+  }, [search, tracks]);
 
   return (
     <View style={defaultStyles.container}>

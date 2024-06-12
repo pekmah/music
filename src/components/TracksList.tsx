@@ -7,13 +7,20 @@ import { unknownTrackImageUri } from "@/constants/images";
 import FastImage from "react-native-fast-image";
 import { useQueue } from "@/store/queue";
 import { useRef } from "react";
+import QueueControls from "./QueueControls";
 
 export type TrackListProps = Partial<FlatListProps<Track>> & {
   id: string;
   tracks: Track[];
+  hideQueueControls?: boolean;
 };
 
-const TracksList = ({ id, tracks, ...flatlistProps }: TrackListProps) => {
+const TracksList = ({
+  id,
+  tracks,
+  hideQueueControls = false,
+  ...flatlistProps
+}: TrackListProps) => {
   const queueOffset = useRef(0); //save current index of played track
   const { activateQueueId, setActiveQueueId } = useQueue();
 
@@ -55,6 +62,11 @@ const TracksList = ({ id, tracks, ...flatlistProps }: TrackListProps) => {
 
   return (
     <FlatList
+      ListHeaderComponent={
+        hideQueueControls ? null : (
+          <QueueControls tracks={tracks} style={{ paddingBottom: 20 }} />
+        )
+      }
       contentContainerStyle={{ paddingTop: 10, paddingBottom: 128 }}
       data={tracks}
       ItemSeparatorComponent={ItemSeperator}

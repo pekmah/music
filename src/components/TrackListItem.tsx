@@ -7,6 +7,8 @@ import { unknownTrackImageUri } from "@/constants/images";
 import { colors, fontSize } from "@/constants/tokens";
 import { defaultStyles } from "@/styles";
 import { Entypo, Ionicons } from "@expo/vector-icons";
+import TrackShortcutsMenu from "./TrackShortcutsMenu";
+import StopPropagation from "./utils/StopPropagation";
 
 export type TrackListItemProps = {
   track: Track;
@@ -71,7 +73,16 @@ const TrackListItem = ({
               <></>
             )}
           </View>
-          <Entypo name="dots-three-horizontal" size={18} color={colors.icon} />
+
+          <StopPropagation>
+            <TrackShortcutsMenu track={track}>
+              <Entypo
+                name="dots-three-horizontal"
+                size={18}
+                color={colors.icon}
+              />
+            </TrackShortcutsMenu>
+          </StopPropagation>
         </View>
       </View>
     </TouchableHighlight>

@@ -15,6 +15,7 @@ import PlayerProgressBar from "@/components/PlayerProgressBar";
 import PlayerRepeatToggle from "@/components/PlayerRepeatToggle";
 import usePlayerBackground from "@/hooks/usePlayerBackground";
 import { LinearGradient } from "expo-linear-gradient";
+import useTrackPlayerFavorite from "@/hooks/useTrackPlayerFavorite";
 
 const Player = () => {
   const activeTrack = useActiveTrack();
@@ -23,11 +24,7 @@ const Player = () => {
     activeTrack?.artwork ?? unknownTrackImageUri
   );
 
-  const isFavorite = false;
-
-  const toggleFavorite = () => {
-    console.log("toggleFavorite");
-  };
+  const { isFavorite, toggleFavorite } = useTrackPlayerFavorite();
 
   if (!activeTrack) {
     return (

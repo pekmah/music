@@ -7,8 +7,11 @@ import { useCallback } from "react";
 import useLogTrackPlayerState from "@/hooks/useLogTrackPlayerState";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { colors } from "@/constants/tokens";
+import TrackPlayer from "react-native-track-player";
+import playbackService from "@/constants/playbackService";
 
 SplashScreen.preventAutoHideAsync();
+TrackPlayer.registerPlaybackService(() => playbackService);
 
 const App = () => {
   const handleTrackPlayerLoaded = useCallback(() => {
